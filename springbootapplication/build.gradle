@@ -1,0 +1,42 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.1'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.springbootapplication'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'mysql:mysql-connector-java'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+//	compile group: 'org.springframework.data', name: 'spring-data-rest-webmvc', version: '2.6.14.RELEASE'
+//Thanks for using https://jar-download.com
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.3'
+	implementation 'org.apache.logging.log4j:log4j-api:2.17.2'
+	implementation 'org.apache.logging.log4j:log4j-core:2.17.2'
+
+	implementation group: 'org.apache.commons', name: 'commons-csv', version: '1.5'
+
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
